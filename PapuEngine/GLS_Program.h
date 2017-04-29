@@ -19,5 +19,7 @@ public:
 	void compileShaders(const string& vertexShaderFilePath, 
 						const string& fragmentShaderFilePath);
 
+	void linkShader();
+
 };
 

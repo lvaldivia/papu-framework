@@ -9,6 +9,37 @@ GLS_Program::GLS_Program(): _programID(0) , _vertexShaderID(0), _fragmentShaderI
 }
 
 
+void GLS_Program::linkShader() {
+	glAttachShader(_programID, _vertexShaderID);
+	glAttachShader(_programID, _fragmentShaderID);
+
+	glLinkProgram(_programID);
+
+	GLint isLinked = 0;
+	glGetProgramiv(_programID, GL_LINK_STATUS, (int *)&isLinked);
+	if (isLinked == GL_FALSE)
+	{
+		GLint maxLength = 0;
+		glGetProgramiv(_programID, GL_INFO_LOG_LENGTH, &maxLength);
+
+		//The maxLength includes the NULL character
+		std::vector<GLchar> infoLog(maxLength);
+		glGetProgramInfoLog(_programID, maxLength, &maxLength, &infoLog[0]);
+
+		//We don't need the program anymore.
+		glDeleteProgram(_programID);
+		//Don't leak shaders either.
+		glDeleteShader(_vertexShaderID);
+		glDeleteShader(_fragmentShaderID);
+		return;
+	}
+	glDetachShader(_programID, _vertexShaderID);
+	glDetachShader(_programID, _fragmentShaderID);
+	glDeleteShader(_vertexShaderID);
+	glDeleteShader(_fragmentShaderID);
+}
+
+
 void GLS_Program::compileShaders(const string& vertexShaderFilePath,
 	const string& fragmentShaderFilePath) {
 

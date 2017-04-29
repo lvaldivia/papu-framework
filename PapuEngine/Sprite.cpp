@@ -1,4 +1,6 @@
 #include "Sprite.h"
+#include "Vertex.h"
+#include <cstddef>
 
 Sprite::Sprite()
 {
@@ -16,25 +18,14 @@ void Sprite::init(float x, float y, int width ,int height)
 		glGenBuffers(1, &_vobID);
 	}
 
-	float vertexData[12];
+	Vertex vertexData[6];
 
-	vertexData[0] = _x+_width;
-	vertexData[1] = _y + _height;
-
-	vertexData[2] = _x;
-	vertexData[3] = _y+ _height;
-
-	vertexData[4] = _x;
-	vertexData[5] = _y;
-
-	vertexData[6] = _x;
-	vertexData[7] = _y;
-
-	vertexData[8] = _x + _width;
-	vertexData[9] = _y;
-
-	vertexData[10] = _x + _width;
-	vertexData[11] = _y + _height;
+	vertexData[0].setPosition(_x + _width, _y + _height);
+	vertexData[1].setPosition(_x, _y + _height);
+	vertexData[2].setPosition(_x, _y);
+	vertexData[3].setPosition(_x, _y);
+	vertexData[4].setPosition(_x + _width, _y);
+	vertexData[5].setPosition(_x + _width, _y + _height);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vobID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
@@ -45,7 +36,14 @@ void Sprite::draw()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, _vobID);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	//primer atributo position
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), 
+							(void*)offsetof(Vertex,position));
+
+	//segundo atributo color
+	glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex),
+		(void*)offsetof(Vertex, color));
+
 	glDrawArrays(GL_TRIANGLES,0,6);
 	glDisableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
