@@ -16,6 +16,10 @@ private:
 public:
 	GLS_Program();
 	~GLS_Program();
+	int _numAtribute;
+	void addAtribute(const string atributeName);
+	void use();
+	void unuse();
 	void compileShaders(const string& vertexShaderFilePath, 
 						const string& fragmentShaderFilePath);
 
