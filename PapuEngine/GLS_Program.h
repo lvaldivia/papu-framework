@@ -25,5 +25,7 @@ public:
 
 	void linkShader();
 
+	GLuint getUniformLocation(const string& name);
+
 };
 

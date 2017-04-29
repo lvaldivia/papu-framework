@@ -1,3 +1,4 @@
 ﻿  MainGame.cpp
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   PapuEngine.vcxproj -> C:\Users\Proyecto\Downloads\fr\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Proyecto\Downloads\fr\Debug\PapuEngine.pdb (Partial PDB)

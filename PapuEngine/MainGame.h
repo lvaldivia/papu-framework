@@ -15,6 +15,7 @@ class MainGame
 private:
 	int _witdh;
 	int _height;
+	float _time;
 	SDL_Window* _window;
 	void init();
 	Sprite _sprite;

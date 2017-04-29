@@ -47,6 +47,17 @@ void GLS_Program::linkShader() {
 	glDeleteShader(_fragmentShaderID);
 }
 
+GLuint GLS_Program::getUniformLocation(const string & name)
+{
+	GLuint location = glGetUniformLocation(_programID,
+		name.c_str());
+	if (location == GL_INVALID_INDEX) {
+		fatalError("Uniform " + name + " not found in shader");
+	}
+	return location;
+}
+
+
 
 void GLS_Program::compileShaders(const string& vertexShaderFilePath,
 	const string& fragmentShaderFilePath) {
