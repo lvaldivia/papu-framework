@@ -1,6 +1,10 @@
 #include "GLS_Program.h"
 #include <fstream>
 #include <vector>
+#include <iostream>
+#include "Error.h"
+
+using namespace std;
 
 
 
@@ -30,6 +34,9 @@ void GLS_Program::linkShader() {
 		//We don't need the program anymore.
 		glDeleteProgram(_programID);
 		//Don't leak shaders either.
+		fatalError("Shaders do not linked " 
+					+ printf("%s", &(infoLog[0])));
+
 		glDeleteShader(_vertexShaderID);
 		glDeleteShader(_fragmentShaderID);
 		return;
@@ -65,7 +72,7 @@ void GLS_Program::compileShader(const string& shaderPath, GLuint id) {
 
 	ifstream shaderFile(shaderPath);
 	if (shaderFile.fail()) {
-		
+		fatalError("Could not open " + shaderPath);
 	}
 	while (getline(shaderFile, line)) {
 		filecontent += line + "\n";
@@ -84,11 +91,17 @@ void GLS_Program::compileShader(const string& shaderPath, GLuint id) {
 		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &maxLength);
 
 		// The maxLength includes the NULL character
-		std::vector<GLchar> errorLog(maxLength);
-		glGetShaderInfoLog(id, maxLength, &maxLength, &errorLog[0]);
+		std::vector<GLchar> infoLog(maxLength);
+		glGetShaderInfoLog(id, maxLength, &maxLength, &infoLog[0]);
 
 		// Provide the infolog in whatever manor you deem best.
 		// Exit with failure.
+
+		std::cout << shaderPath << endl;
+
+		fatalError("Shaders do not compiled "+
+			+ printf("%s", &(infoLog[0])));
+
 		glDeleteShader(id); // Don't leak the shader.
 		return;
 	}

@@ -21,13 +21,23 @@ void MainGame::init() {
 	}
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	initShaders();
+}
+
+void MainGame::initShaders() {
+	_program.compileShaders("Shaders/colorShaderVert.txt",
+		"Shaders/colorShaderFrag.txt");
+	_program.addAtribute("vertexPosition");
+	_program.linkShader();
 }
 
 
 void MainGame::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	_program.use();
 	_sprite.draw();
+	_program.unuse();
 	SDL_GL_SwapWindow(_window);
 }
 
