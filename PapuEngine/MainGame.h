@@ -3,6 +3,7 @@
 #include <GL\glew.h>
 #include "GLS_Program.h"
 #include "Sprite.h"
+#include <vector>
 
 enum class GameState
 {
@@ -18,9 +19,9 @@ private:
 	float _time;
 	SDL_Window* _window;
 	void init();
-	Sprite _sprite;
 	void procesInput();
 	GLS_Program _program;
+	vector<Sprite*> _sprites;
 	
 public:
 	MainGame();

@@ -1,9 +1,14 @@
 #include "MainGame.h"
 #include "Sprite.h"
+#include "ImageLoader.h"
 
 void MainGame::run() {
 	init();
-	_sprite.init(-1,-1,1,1);
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1, -1, 1, 1, "Textures/Paper_Mario_.png");
+
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0, -1, 1, 1, "Textures/Paper_Mario_.png");
 	update();
 }
 void MainGame::init() {
@@ -29,6 +34,7 @@ void MainGame::initShaders() {
 		"Shaders/colorShaderFrag.txt");
 	_program.addAtribute("vertexPosition");
 	_program.addAtribute("vertexColor");
+	_program.addAtribute("vertexUV");
 	_program.linkShader();
 }
 
@@ -37,13 +43,24 @@ void MainGame::draw() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	_program.use();
+
+	glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_2D, _texture.id);
+
+	
 	GLuint timeLocation = 
 		_program.getUniformLocation("time");
 
 	glUniform1f(timeLocation,_time);
-	_time+=0.0002;
 
-	_sprite.draw();
+	GLuint imageLocation = _program.getUniformLocation("myImage");
+	glUniform1i(imageLocation, 0);
+	_time+=0.002;
+
+	for (int i = 0; i < _sprites.size(); i++)
+	{
+		_sprites[i]->draw();
+	}
 	_program.unuse();
 	SDL_GL_SwapWindow(_window);
 }
