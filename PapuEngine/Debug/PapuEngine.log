@@ -1,4 +1,5 @@
-﻿  MainGame.cpp
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+﻿  ImageLoader.cpp
+c:\users\proyecto\downloads\fr\papuengine\imageloader.cpp(45): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+c:\users\proyecto\downloads\fr\papuengine\imageloader.cpp(46): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
   PapuEngine.vcxproj -> C:\Users\Proyecto\Downloads\fr\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Proyecto\Downloads\fr\Debug\PapuEngine.pdb (Partial PDB)
