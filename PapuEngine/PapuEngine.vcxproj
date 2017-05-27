@@ -121,6 +121,7 @@
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="GLS_Program.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="GLS_Program.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="ImageLoader.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="PapuEngine.h" />

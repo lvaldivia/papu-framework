@@ -54,7 +54,6 @@ void MainGame::draw() {
 	GLuint imageLocation = _program.getUniformLocation("myImage");
 	glUniform1i(imageLocation, 0);
 
-
 	for (int i = 0; i < _sprites.size(); i++)
 	{
 		_sprites[i]->draw();
@@ -63,10 +62,30 @@ void MainGame::draw() {
 	_window.swapBuffer();
 }
 
+void MainGame::handleInput() {
+	if (_inputManager.isKeyPressed(SDLK_w)) {
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
+	}
+	if (_inputManager.isKeyPressed(SDLK_s)) {
+		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+	}
+	if (_inputManager.isKeyPressed(SDLK_a)) {
+		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
+	}
+	if (_inputManager.isKeyPressed(SDLK_d)) {
+		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
+	}
+	if (_inputManager.isKeyPressed(SDLK_q)) {
+		_camera.setScale(_camera.getScale() + SCALE_SPEED);
+	}
+	if (_inputManager.isKeyPressed(SDLK_e)) {
+		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+	}
+}
+
 void MainGame::procesInput() {
 	SDL_Event event;
-	const float CAMERA_SPEED = 20.0f;
-	const float SCALE_SPEED = 0.1f;
+	
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
@@ -75,32 +94,18 @@ void MainGame::procesInput() {
 				_gameState = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
+				_inputManager.setMouseCoords(event.motion.x, 
+											event.motion.y);
 			break;
+			case SDL_KEYUP:
+				_inputManager.releaseKey(event.key.keysym.sym);
+				break;
 			case  SDL_KEYDOWN:
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_w:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
-					break;
-				case SDLK_s:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
-					break;
-				case SDLK_a :
-					_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
-					break;
-				case SDLK_d:
-					_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
-					break;
-				case SDLK_q:
-					_camera.setScale(_camera.getScale() + SCALE_SPEED);
-					break;
-				case SDLK_e:
-					_camera.setScale(_camera.getScale() - SCALE_SPEED);
-					break;
-				}
+				_inputManager.pressKey(event.key.keysym.sym);
 				break;
 		}
 	}
+	handleInput();
 
 }
 
