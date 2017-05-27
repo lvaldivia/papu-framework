@@ -79,6 +79,10 @@ void MainGame::handleInput() {
 		_camera.setPosition(_camera.getPosition() + 
 			glm::vec2(-CAMERA_SPEED, 0.0));
 	}
+	if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
+		cout << _inputManager.getMouseCoords().x << " " <<
+			_inputManager.getMouseCoords().y << endl ;
+	}
 	if (_inputManager.isKeyPressed(SDLK_q)) {
 		//_camera.setScale(_camera.getScale() + SCALE_SPEED*_camera.getScale());
 	}
@@ -101,6 +105,12 @@ void MainGame::procesInput() {
 				_inputManager.setMouseCoords(event.motion.x, 
 											event.motion.y);
 			break;
+			case SDL_MOUSEBUTTONDOWN:
+				_inputManager.pressKey(event.button.button);
+				break;
+			case SDL_MOUSEBUTTONUP:
+				_inputManager.releaseKey(event.button.button);
+				break;
 			case SDL_KEYUP:
 				_inputManager.releaseKey(event.key.keysym.sym);
 				break;
