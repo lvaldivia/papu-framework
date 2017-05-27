@@ -1,6 +1,9 @@
 #include "MainGame.h"
 #include "Sprite.h"
 #include "ImageLoader.h"
+#include "Engine.h"
+
+
 
 void MainGame::run() {
 	init();
@@ -12,20 +15,8 @@ void MainGame::run() {
 	update();
 }
 void MainGame::init() {
-
-	SDL_Init(SDL_INIT_EVERYTHING);
-	_window = SDL_CreateWindow("Papu engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _witdh, _height, SDL_WINDOW_OPENGL);
-	if (_window == nullptr) {
-	}
-
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-	
-	GLenum error = glewInit();
-	if (error != GLEW_OK) {
-
-	}
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	Papu::init();
+	_window.create("Papu", _witdh, _height, 0);
 	initShaders();
 }
 
@@ -47,22 +38,29 @@ void MainGame::draw() {
 	glActiveTexture(GL_TEXTURE0);
 	//glBindTexture(GL_TEXTURE_2D, _texture.id);
 
-	
 	GLuint timeLocation = 
 		_program.getUniformLocation("time");
 
 	glUniform1f(timeLocation,_time);
 
 	GLuint imageLocation = _program.getUniformLocation("myImage");
-	glUniform1i(imageLocation, 0);
-	_time+=0.002;
+	glUniform1i(imageLocation, 2);
+	_time+=0.0002;
+
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+	GLuint pLocation =
+		_program.getUniformLocation("P");
+
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+	
 
 	for (int i = 0; i < _sprites.size(); i++)
 	{
 		_sprites[i]->draw();
 	}
 	_program.unuse();
-	SDL_GL_SwapWindow(_window);
+	_window.swapWindow();
 }
 
 void MainGame::procesInput() {
@@ -86,18 +84,17 @@ void MainGame::update() {
 	while (_gameState != GameState::EXIT) {
 		procesInput();
 		draw();
-		
+		_camera.update();
 	}
 }
 
 
-MainGame::MainGame(): _window(nullptr), 
-					  _witdh(800),
+MainGame::MainGame(): _witdh(800),
 					  _height(600),
 					  _gameState(GameState::PLAY),
 					  _time(0)
 {
-
+	_camera.init(_witdh, _height);
 }
 
 
