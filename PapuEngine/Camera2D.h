@@ -17,6 +17,8 @@ public:
 	void update();
 	void init(int screenWidth, int screenHeight);
 
+	glm::vec2 getPosition() {return _position;}
+
 	void setPosition(const glm::vec2& newPosition) {
 		_position = newPosition;
 		_needsUpdateMatrix = true;

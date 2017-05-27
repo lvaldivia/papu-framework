@@ -2,6 +2,7 @@
 #include "Sprite.h"
 #include "ImageLoader.h"
 #include "Engine.h"
+#include <iostream>
 
 
 
@@ -53,8 +54,6 @@ void MainGame::draw() {
 
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
-	
-
 	for (int i = 0; i < _sprites.size(); i++)
 	{
 		_sprites[i]->draw();
@@ -65,15 +64,44 @@ void MainGame::draw() {
 
 void MainGame::procesInput() {
 	SDL_Event event;
+	const float CAMERA_SPEED = 20.0f;
+	const float SCALE_SPEED = 0.1f;
+
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
 		{
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_w:
+					_camera.setPosition(_camera.getPosition() +
+										glm::vec2(0.0f, -CAMERA_SPEED));
+
+					break;
+				case SDLK_a:
+					_camera.setPosition(_camera.getPosition() +
+						glm::vec2(-CAMERA_SPEED, 0.0f));
+					break;
+				case SDLK_s:
+					_camera.setPosition(_camera.getPosition() +
+						glm::vec2(0.0f, CAMERA_SPEED));
+					break;
+				case SDLK_d:
+					_camera.setPosition(_camera.getPosition() +
+						glm::vec2(CAMERA_SPEED, 0.0f));
+					break;
+				case SDLK_q:
+					break;
+				case SDLK_e:
+					break;
+				}
+				break;
 			case SDL_QUIT:
 				_gameState = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
-			break;
+				break;
 		}
 	}
 
