@@ -1,11 +1,7 @@
 ﻿  MainGame.cpp
 c:\users\proyecto\documents\clases\papuengine\maingame.cpp(15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\proyecto\documents\clases\papuengine\maingame.cpp(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(98): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-  InputManager.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+c:\users\proyecto\documents\clases\papuengine\maingame.cpp(102): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.pdb (Partial PDB)

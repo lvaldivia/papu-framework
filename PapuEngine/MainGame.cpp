@@ -64,22 +64,26 @@ void MainGame::draw() {
 
 void MainGame::handleInput() {
 	if (_inputManager.isKeyPressed(SDLK_w)) {
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
+		_camera.setPosition(_camera.getPosition() + 
+			glm::vec2(0.0, -CAMERA_SPEED));
 	}
 	if (_inputManager.isKeyPressed(SDLK_s)) {
-		_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+		_camera.setPosition(_camera.getPosition() + 
+			glm::vec2(0.0, CAMERA_SPEED));
 	}
 	if (_inputManager.isKeyPressed(SDLK_a)) {
-		_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
+		_camera.setPosition(_camera.getPosition() + 
+			glm::vec2(CAMERA_SPEED, 0.0));
 	}
 	if (_inputManager.isKeyPressed(SDLK_d)) {
-		_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
+		_camera.setPosition(_camera.getPosition() + 
+			glm::vec2(-CAMERA_SPEED, 0.0));
 	}
 	if (_inputManager.isKeyPressed(SDLK_q)) {
-		_camera.setScale(_camera.getScale() + SCALE_SPEED);
+		//_camera.setScale(_camera.getScale() + SCALE_SPEED*_camera.getScale());
 	}
 	if (_inputManager.isKeyPressed(SDLK_e)) {
-		_camera.setScale(_camera.getScale() - SCALE_SPEED);
+		//_camera.setScale(_camera.getScale() - SCALE_SPEED*_camera.getScale());
 	}
 }
 

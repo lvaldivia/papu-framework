@@ -28,7 +28,7 @@ private:
 	GLS_Program _program;
 	vector<Sprite*> _sprites;
 	Camera2D _camera;
-	const float CAMERA_SPEED = 20.0f;
+	const float CAMERA_SPEED = 0.05f;
 	const float SCALE_SPEED = 0.1f;
 	
 public:
