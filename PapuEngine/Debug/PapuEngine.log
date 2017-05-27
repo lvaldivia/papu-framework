@@ -1,3 +1,22 @@
-﻿  Camera2D.cpp
-  PapuEngine.vcxproj -> C:\Users\pcsilval\Documents\clase\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\pcsilval\Documents\clase\Debug\PapuEngine.pdb (Partial PDB)
+﻿  Window.cpp
+  TextureCache.cpp
+  Sprite.cpp
+  ResourceManager.cpp
+  picoPNG.cpp
+  PapuEngine.cpp
+  MainGame.cpp
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\maingame.cpp(15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\maingame.cpp(58): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+  IOManager.cpp
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\iomanager.cpp(18): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
+  ImageLoader.cpp
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\imageloader.cpp(36): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+c:\users\luis\desktop\papu-framework-master\malogrado\papuengine\imageloader.cpp(37): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+  GLS_Program.cpp
+  Error.cpp
+  Camera2D.cpp
+  Generating Code...
+  PapuEngine.vcxproj -> C:\Users\Luis\Desktop\papu-framework-master\malogrado\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Luis\Desktop\papu-framework-master\malogrado\Debug\PapuEngine.pdb (Partial PDB)

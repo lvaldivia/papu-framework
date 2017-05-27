@@ -6,13 +6,14 @@ Window::Window()
 {
 }
 
-int Window::create(string windowName,
-	int screenWidth, int screenHeight,
-	unsigned int currentFlags) {
+void Window::swapBuffer() {
+	SDL_GL_SwapWindow(_window);
+}
 
+int Window::create(string windowName, int screenWidth, int screenHeight, unsigned int currentFlags) {
 	Uint32 flags = SDL_WINDOW_OPENGL;
 
-	if (currentFlags & INVISIBLE) {
+	if (currentFlags & INVISBLE) {
 		flags |= SDL_WINDOW_HIDDEN;
 	}
 	if (currentFlags & FULLSCREEN) {
@@ -22,9 +23,7 @@ int Window::create(string windowName,
 		flags |= SDL_WINDOW_BORDERLESS;
 	}
 
-	_window = SDL_CreateWindow(windowName.c_str(),
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		screenWidth, screenHeight, flags);
+	_window = SDL_CreateWindow("Papu engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, flags);
 	if (_window == nullptr) {
 	}
 
@@ -34,12 +33,11 @@ int Window::create(string windowName,
 	if (error != GLEW_OK) {
 
 	}
+	
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-	return 0;
-}
+	SDL_GL_SetSwapInterval(0);
 
-void Window::swapWindow() {
-	SDL_GL_SwapWindow(_window);
+	return 0;
 }
 
 

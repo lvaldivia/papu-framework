@@ -48,7 +48,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="PapuEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Camera2D.cpp">
@@ -92,7 +92,7 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.h">
+    <ClInclude Include="PapuEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Camera2D.h">

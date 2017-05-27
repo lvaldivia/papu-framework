@@ -11,7 +11,6 @@ GLTexture TextureCache::getTexture(std::string texturePath) {
 	//std::map<std::string, GLTexture>::iterator mit
 		//= _textureMap.find(texturePath);
 	auto mit = _textureMap.find(texturePath);
-	cout << texturePath << endl;
 	if (mit == _textureMap.end()) {
 		GLTexture texture = ImageLoader::loadPNG(texturePath);
 		//std::pair<std::string, GLTexture> 
