@@ -60,9 +60,13 @@ void Level::parseLevel() {
 				, 0.0f, color);				
 				break;
 			case '@':
-
+				_levelData[y][x] = '.';
+				_playerPosition.x = x*TILE_WIDTH;
+				_playerPosition.y = y*TILE_WIDTH;
 				break;
 			case 'Z':
+				_levelData[y][x] = '.';
+				_zombiesPosition.emplace_back(x*TILE_WIDTH, y*TILE_WIDTH);
 				break;
 			case '.':
 				break;

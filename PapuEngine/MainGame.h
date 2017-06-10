@@ -9,6 +9,8 @@
 #include "InputManager.h"
 #include "Bullet.h"
 #include "Level.h"
+#include "Player.h"
+#include "Human.h"
 
 enum class GameState
 {
@@ -31,8 +33,11 @@ private:
 	InputManager _inputManager;
 	vector<Bullet> _bullets;
 	vector<Level*> _levels;
+	vector<Human*>  _humans;
+	Player* _player;
 	int _currenLevel;
 	void initLevel();
+	void updateAgents();
 	
 public:
 	MainGame();

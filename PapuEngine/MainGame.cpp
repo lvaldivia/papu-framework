@@ -22,7 +22,10 @@ void MainGame::init() {
 
 void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
+	_player = new Player();
 	_currenLevel = 0;
+	_player->init(1.0f, _levels[_currenLevel]->getPlayerPosition(), &_inputManager);
+	_humans.push_back(_player);
 	_spriteBacth.init();
 }
 
@@ -61,6 +64,11 @@ void MainGame::draw() {
 	_spriteBacth.begin();
 	_levels[_currenLevel]->draw();
 
+	for (int i = 0; i < _humans.size(); i++)
+	{
+		_humans[i]->draw(_spriteBacth);
+	}
+
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
@@ -98,18 +106,18 @@ void MainGame::procesInput() {
 				break;
 		}
 
-		if (_inputManager.isKeyPressed(SDLK_w)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
-		}
-		if (_inputManager.isKeyPressed(SDLK_s)) {
+		/*if (_inputManager.isKeyPressed(SDLK_w)) {
 			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
 		}
-		if (_inputManager.isKeyPressed(SDLK_a)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
+		if (_inputManager.isKeyPressed(SDLK_s)) {
+			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
 		}
-		if (_inputManager.isKeyPressed(SDLK_d)) {
+		if (_inputManager.isKeyPressed(SDLK_a)) {
 			_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
 		}
+		if (_inputManager.isKeyPressed(SDLK_d)) {
+			_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
+		}*/
 		if (_inputManager.isKeyPressed(SDLK_q)) {
 			_camera.setScale(_camera.getScale() + SCALE_SPEED);
 		}
@@ -136,7 +144,7 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		_time += 0.002f;
-		for (int i = 0; i < _bullets.size();)
+		/*for (int i = 0; i < _bullets.size();)
 		{
 			if(_bullets[i].update()){
 				_bullets[i] = _bullets.back();
@@ -145,16 +153,25 @@ void MainGame::update() {
 			else {
 				i++;
 			}
-		}
+		}*/
+		updateAgents();
+		_camera.setPosition(_player->getPosition());
 	}
 }
 
+void MainGame::updateAgents() {
+	for (int i = 0; i < _humans.size(); i++)
+	{
+		_humans[i]->update();
+	}
+}
 
 MainGame::MainGame(): 
 					  _witdh(800),
 					  _height(600),
 					  _gameState(GameState::PLAY),
-					  _time(0)
+					  _time(0),
+					  _player(nullptr)
 {
 	_camera.init(_witdh, _height);
 }
