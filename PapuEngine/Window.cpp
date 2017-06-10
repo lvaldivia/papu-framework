@@ -38,8 +38,7 @@ int Window::create(string windowName, int screenWidth, int screenHeight, unsigne
 	SDL_GL_SetSwapInterval(0);
 
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA,
-		GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	return 0;
 }

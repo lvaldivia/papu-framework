@@ -16,7 +16,7 @@ private:
 public:
 	Camera2D();
 	~Camera2D();
-
+	glm::vec2 convertScreenToWorl(glm::vec2 screenScoords);
 	void init(int screenWidth, int screenHeight);
 
 	void update();
