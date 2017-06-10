@@ -8,6 +8,7 @@
 #include <vector>
 #include "SpriteBacth.h"
 #include "InputManager.h"
+#include "Bullet.h"
 
 enum class GameState
 {
@@ -29,6 +30,7 @@ private:
 	Camera2D _camera;
 	SpriteBacth _spriteBacth;
 	InputManager _inputManager;
+	vector<Bullet> _bullets;
 	
 public:
 	MainGame();

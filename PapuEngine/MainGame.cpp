@@ -62,7 +62,11 @@ void MainGame::draw() {
 	color.b = 255;
 	color.a = 255;
 	_spriteBacth.draw(position, uv, texture.id,0.0f, color);
-	_spriteBacth.draw(position + glm::vec4(50,0,0,0), uv, texture.id, 0.0f, color);
+
+	for (int i = 0; i < _bullets.size(); i++)
+	{
+		_bullets[i].draw(_spriteBacth);
+	}
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
@@ -121,6 +125,12 @@ void MainGame::procesInput() {
 		if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
 			glm::vec2 mouseCoords =  _camera.convertScreenToWorl(_inputManager.getMouseCoords());
 			cout << mouseCoords.x << " " << mouseCoords.y << endl;
+
+			glm::vec2 playerPosition(0, 0);
+
+			glm::vec2 direction = mouseCoords - playerPosition;
+			direction = glm::normalize(direction);
+			_bullets.emplace_back(playerPosition, direction, 1.0f,1000);
 		}
 	}
 }
@@ -132,6 +142,16 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		_time += 0.002f;
+		for (int i = 0; i < _bullets.size();)
+		{
+			if(_bullets[i].update()){
+				_bullets[i] = _bullets.back();
+				_bullets.pop_back();
+			}
+			else {
+				i++;
+			}
+		}
 	}
 }
 

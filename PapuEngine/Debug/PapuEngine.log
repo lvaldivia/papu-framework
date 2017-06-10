@@ -1,5 +1,3 @@
-﻿  SpriteBacth.cpp
-c:\users\luis\desktop\papu-framework-master\inputmanager\papuengine\spritebacth.cpp(40): warning C4018: '<': signed/unsigned mismatch
-c:\users\luis\desktop\papu-framework-master\inputmanager\papuengine\spritebacth.cpp(68): warning C4018: '<': signed/unsigned mismatch
+﻿  Camera2D.cpp
   PapuEngine.vcxproj -> C:\Users\Luis\Desktop\papu-framework-master\InputManager\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Luis\Desktop\papu-framework-master\InputManager\Debug\PapuEngine.pdb (Partial PDB)
