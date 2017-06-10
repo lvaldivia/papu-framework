@@ -1,5 +1,4 @@
 #include "MainGame.h"
-#include "Sprite.h"
 #include "ImageLoader.h"
 #include <iostream>
 #include "ResourceManager.h"
@@ -16,7 +15,14 @@ void MainGame::run() {
 void MainGame::init() {
 	Papu::init();
 	_window.create("Engine", _witdh, _height, 0);
+	glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
+	initLevel();
 	initShaders();
+}
+
+void MainGame::initLevel() {
+	_levels.push_back(new Level("Levels/level1.txt"));
+	_currenLevel = 0;
 	_spriteBacth.init();
 }
 
@@ -53,20 +59,8 @@ void MainGame::draw() {
 	glUniform1i(imageLocation, 0);
 
 	_spriteBacth.begin();
-	glm::vec4 position(0.0f, 0.0f, 50.0f, 50.0f);
-	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-	static GLTexture texture = ResourceManager::getTexture("Textures/Paper_Mario_.png");
-	Color color;
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
-	color.a = 255;
-	_spriteBacth.draw(position, uv, texture.id,0.0f, color);
+	_levels[_currenLevel]->draw();
 
-	for (int i = 0; i < _bullets.size(); i++)
-	{
-		_bullets[i].draw(_spriteBacth);
-	}
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
