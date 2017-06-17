@@ -1,6 +1,8 @@
-﻿  MainGame.cpp
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(67): warning C4018: '<': signed/unsigned mismatch
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(93): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(163): warning C4018: '<': signed/unsigned mismatch
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.pdb (Partial PDB)
+﻿  Level.cpp
+c:\users\proyecto\documents\funda\papuengine\level.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\proyecto\documents\funda\papuengine\level.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\proyecto\documents\funda\papuengine\level.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\proyecto\documents\funda\papuengine\level.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\funda\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\funda\Debug\PapuEngine.pdb (Partial PDB)

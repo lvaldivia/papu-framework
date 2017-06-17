@@ -24,7 +24,7 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
 	_currenLevel = 0;
-	_player->init(1.0f, _levels[_currenLevel]->getPlayerPosition(), &_inputManager);
+	_player->init(0.10f, _levels[_currenLevel]->getPlayerPosition(), &_inputManager);
 	_humans.push_back(_player);
 	_spriteBacth.init();
 }
@@ -64,7 +64,7 @@ void MainGame::draw() {
 	_spriteBacth.begin();
 	_levels[_currenLevel]->draw();
 
-	for (int i = 0; i < _humans.size(); i++)
+	for (size_t i = 0; i < _humans.size(); i++)
 	{
 		_humans[i]->draw(_spriteBacth);
 	}
@@ -144,25 +144,16 @@ void MainGame::update() {
 		draw();
 		_camera.update();
 		_time += 0.002f;
-		/*for (int i = 0; i < _bullets.size();)
-		{
-			if(_bullets[i].update()){
-				_bullets[i] = _bullets.back();
-				_bullets.pop_back();
-			}
-			else {
-				i++;
-			}
-		}*/
 		updateAgents();
 		_camera.setPosition(_player->getPosition());
 	}
 }
 
 void MainGame::updateAgents() {
-	for (int i = 0; i < _humans.size(); i++)
+	for (size_t i = 0; i < _humans.size(); i++)
 	{
-		_humans[i]->update();
+		_humans[i]->update(_levels[_currenLevel]->getLevelData(),
+			_humans,_zombies);
 	}
 }
 
