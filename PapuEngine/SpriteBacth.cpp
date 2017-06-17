@@ -12,7 +12,7 @@ void SpriteBacth::init() {
 void SpriteBacth::begin(GlyphSortType sortType) {
 	_sortType = sortType;
 	_renderBacthes.clear();
-	for (int i = 0; i < _glyphs.size(); i++)
+	for (size_t i = 0; i < _glyphs.size(); i++)
 	{
 		delete _glyphs[i];
 	}
@@ -41,7 +41,7 @@ void SpriteBacth::createRenderBatches() {
 	ofset += 6;
 
 	
-	for (int cg = 1; cg < _glyphs.size(); cg++)
+	for (size_t cg = 1; cg < _glyphs.size(); cg++)
 	{
 		if (_glyphs[cg]->texture != _glyphs[cg-1]->texture) {
 			_renderBacthes.emplace_back(ofset, 6, _glyphs[cg]->texture);

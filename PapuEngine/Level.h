@@ -6,6 +6,7 @@
 using namespace std;
 
 const int TILE_WIDTH = 64;
+
 class Level
 {
 
@@ -19,6 +20,10 @@ public:
 	glm::vec2 getPlayerPosition() const { 
 		return _playerPosition; 
 	};
+	int getWidth() const { return  _levelData[0].size(); }
+	int getHeight() const { return  _levelData[0].size(); }
+	int getNumHumans() const { return _numHumans; }
+	const std::vector<std::string>& getLevelData() { return _levelData; }
 	std::vector<glm::vec2> getZombiesPosition()const {
 		return _zombiesPosition;
 	};

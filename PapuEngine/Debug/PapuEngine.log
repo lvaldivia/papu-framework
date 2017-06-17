@@ -1,6 +1,5 @@
-﻿  MainGame.cpp
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(67): warning C4018: '<': signed/unsigned mismatch
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(93): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-c:\users\proyecto\documents\clases\papuengine\maingame.cpp(163): warning C4018: '<': signed/unsigned mismatch
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.pdb (Partial PDB)
+﻿  Zombie.cpp
+  Gun.cpp
+  Generating Code...
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.pdb (Partial PDB)
