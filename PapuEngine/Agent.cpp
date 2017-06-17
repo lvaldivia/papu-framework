@@ -35,6 +35,25 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData) {
 	return true;
 }
 
+bool Agent::collideWithAgent(Agent* agent) {
+	glm::vec2 centerPosA = _position +
+								glm::vec2(AGENT_WIDTH / 2);
+	glm::vec2 centerPosB = agent->getPosition() +
+								glm::vec2(AGENT_WIDTH / 2);
+	glm::vec2 dist = centerPosA - centerPosB;
+	const float MIN_DISTANCE = AGENT_RADIUS * 2;
+	float distance = glm::length(dist);
+	float collisionDepth = MIN_DISTANCE - distance;
+	if (collisionDepth > 0) {
+		glm::vec2 collisionDepthVec =
+			glm::normalize(dist) * collisionDepth;
+		_position += collisionDepthVec / 2.0f;
+		agent->_position -= collisionDepthVec / 2.0f;
+		return true;
+	}
+	return false;
+}
+
 void Agent::checkTilePosition(const std::vector<std::string>& levelData, std::vector<glm::vec2>& collideTilePosition, float x, float y) {
 	glm::vec2 cornesPos = glm::vec2(floor(x / (float)TILE_WIDTH),
 		floor(y / (float)TILE_WIDTH));

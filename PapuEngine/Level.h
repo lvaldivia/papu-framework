@@ -14,6 +14,10 @@ private:
 	int _numHumans;
 	void parseLevel();
 public:
+
+	int getNumHumans() const {
+		return _numHumans;
+	}
 	glm::vec2 _playerPosition;
 	std::vector<glm::vec2> _zombiesPosition;
 	glm::vec2 getPlayerPosition() const { 
