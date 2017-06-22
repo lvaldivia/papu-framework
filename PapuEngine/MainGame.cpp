@@ -134,19 +134,6 @@ void MainGame::procesInput() {
 				_inputManager.releaseKey(event.button.button);
 				break;
 		}
-
-		/*if (_inputManager.isKeyPressed(SDLK_w)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, CAMERA_SPEED));
-		}
-		if (_inputManager.isKeyPressed(SDLK_s)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
-		}
-		if (_inputManager.isKeyPressed(SDLK_a)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0));
-		}
-		if (_inputManager.isKeyPressed(SDLK_d)) {
-			_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0));
-		}*/
 		if (_inputManager.isKeyPressed(SDLK_q)) {
 			_camera.setScale(_camera.getScale() + SCALE_SPEED);
 		}
@@ -194,7 +181,12 @@ void MainGame::updateAgents() {
 		for (size_t j = 1; j < _humans.size(); j++)
 		{
 			if (_zombies[i]->collideWithAgent(_humans[j])) {
+				_zombies.push_back(new Zombie);
+				_zombies.back()->init(1.3f, _humans[j]->getPosition());
 
+				delete _humans[j];
+				_humans[j] = _humans.back();
+				_humans.pop_back();
 			}
 		}
 	}

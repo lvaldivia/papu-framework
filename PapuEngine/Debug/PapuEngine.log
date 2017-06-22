@@ -1,6 +1,44 @@
-﻿  main.cpp
-  Zombie.cpp
+﻿  Zombie.cpp
+  Window.cpp
+  TextureCache.cpp
+  SpriteBacth.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\spritebacth.cpp(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\papu-framework-master\papuengine\spritebacth.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\papu-framework-master\papuengine\spritebacth.cpp(72): warning C4018: '<': signed/unsigned mismatch
+  Sprite.cpp
+  ResourceManager.cpp
+  Player.cpp
+  picoPNG.cpp
+  PapuEngine.cpp
+  MainGame.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(32): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(122): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+  main.cpp
+  Level.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\level.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\papu-framework-master\papuengine\level.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\luis\documents\papu-framework-master\papuengine\level.cpp(64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\level.cpp(65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  IOManager.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\iomanager.cpp(15): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\iomanager.cpp(18): warning C4244: '-=': conversion from 'std::streamoff' to 'int', possible loss of data
+  InputManager.cpp
+  ImageLoader.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\imageloader.cpp(36): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\imageloader.cpp(37): warning C4244: '=': conversion from 'unsigned long' to 'float', possible loss of data
+  Human.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\human.cpp(14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\human.cpp(28): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  GLS_Program.cpp
+  Error.cpp
+  Camera2D.cpp
+  Bullet.cpp
   Generating Code...
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\Clases\Debug\PapuEngine.pdb (Partial PDB)
+  Compiling...
+  Agent.cpp
+c:\users\luis\documents\papu-framework-master\papuengine\agent.cpp(64): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+  LINK : C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.exe not found or not built by the last incremental link; performing full link
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.exe
+  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.pdb (Partial PDB)
