@@ -89,10 +89,16 @@ void MainGame::draw() {
 
 	_spriteBacth.begin();
 	_levels[_currenLevel]->draw();
-
+		
+	glm::vec2 agentPos;
+	glm::vec2 agentDims(AGENT_RADIUS * 2.0f);
 	for (size_t i = 0; i < _humans.size(); i++)
 	{
-		_humans[i]->draw(_spriteBacth);
+		
+		if (_camera.isBoxInView(_humans[i]->getPosition(), agentDims)) {
+			_humans[i]->draw(_spriteBacth);
+		}
+		
 	}
 
 	for (size_t i = 0; i < _zombies.size(); i++)
@@ -141,13 +147,25 @@ void MainGame::procesInput() {
 				_inputManager.releaseKey(event.button.button);
 				break;
 		}
-		if (_inputManager.isKeyPressed(SDLK_q)) {
+		if (_inputManager.isKeyDown(SDLK_q)) {
 			_camera.setScale(_camera.getScale() + SCALE_SPEED);
 		}
-		if (_inputManager.isKeyPressed(SDLK_e)) {
+		if (_inputManager.isKeyDown(SDLK_e)) {
 			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
+<<<<<<< HEAD
+		if (_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
+			glm::vec2 mouseCoords =  _camera.convertScreenToWorl(_inputManager.getMouseCoords());
+			cout << mouseCoords.x << " " << mouseCoords.y << endl;
+
+			glm::vec2 playerPosition(0, 0);
+
+			glm::vec2 direction = mouseCoords - playerPosition;
+			direction = glm::normalize(direction);
+			_bullets.emplace_back(playerPosition, direction, 1.0f,1000);
+=======
 		if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
+>>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
 		}
 	}
 }
@@ -160,18 +178,24 @@ void MainGame::update() {
 		_camera.update();
 		_time += 0.002f;
 		updateAgents();
+		_inputManager.update();
 		_camera.setPosition(_player->getPosition());
 	}
 }
 
 void MainGame::updateAgents() {
+<<<<<<< HEAD
+	
+=======
 	for (size_t i = 0; i < _bullets.size(); i++)
 	{
 		_bullets[i].update(_humans,_zombies);
 	}
 
+>>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
 	for (size_t i = 0; i < _humans.size(); i++)
 	{
+		
 		_humans[i]->update(_levels[_currenLevel]->getLevelData(),
 			_humans,_zombies);
 	}

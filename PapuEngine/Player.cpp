@@ -11,19 +11,24 @@ void Player::init(float speed, glm::vec2 position, InputManager* inputManager, C
 }
 void Player::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans,
+<<<<<<< HEAD
+	std::vector<Zombie*>& zombies) {
+	if (_inputManager->isKeyDown(SDLK_w)) {
+=======
 	std::vector<Zombie*>& zombies,
 	std::vector<Bullet>& bullets
 	) {
 	if (_inputManager->isKeyPressed(SDLK_w)) {
+>>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
 		_position.y += _speed;
 	}
-	if (_inputManager->isKeyPressed(SDLK_s)) {
+	if (_inputManager->isKeyDown(SDLK_s)) {
 		_position.y -= _speed;
 	}
-	if (_inputManager->isKeyPressed(SDLK_a)) {
+	if (_inputManager->isKeyDown(SDLK_a)) {
 		_position.x -= _speed;
 	}
-	if (_inputManager->isKeyPressed(SDLK_d)) {
+	if (_inputManager->isKeyDown(SDLK_d)) {
 		_position.x += _speed;
 	}
 	collideWithLevel(levelData);
