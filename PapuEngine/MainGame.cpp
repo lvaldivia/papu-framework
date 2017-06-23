@@ -106,10 +106,6 @@ void MainGame::draw() {
 		_zombies[i]->draw(_spriteBacth);
 	}
 
-	for (size_t i = 0; i < _bullets.size(); i++)
-	{
-		_bullets[i].draw(_spriteBacth);
-	}
 
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
@@ -153,20 +149,7 @@ void MainGame::procesInput() {
 		if (_inputManager.isKeyDown(SDLK_e)) {
 			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
-<<<<<<< HEAD
-		if (_inputManager.isKeyDown(SDL_BUTTON_LEFT)) {
-			glm::vec2 mouseCoords =  _camera.convertScreenToWorl(_inputManager.getMouseCoords());
-			cout << mouseCoords.x << " " << mouseCoords.y << endl;
 
-			glm::vec2 playerPosition(0, 0);
-
-			glm::vec2 direction = mouseCoords - playerPosition;
-			direction = glm::normalize(direction);
-			_bullets.emplace_back(playerPosition, direction, 1.0f,1000);
-=======
-		if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
->>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
-		}
 	}
 }
 
@@ -184,15 +167,8 @@ void MainGame::update() {
 }
 
 void MainGame::updateAgents() {
-<<<<<<< HEAD
-	
-=======
-	for (size_t i = 0; i < _bullets.size(); i++)
-	{
-		_bullets[i].update(_humans,_zombies);
-	}
 
->>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
+
 	for (size_t i = 0; i < _humans.size(); i++)
 	{
 		

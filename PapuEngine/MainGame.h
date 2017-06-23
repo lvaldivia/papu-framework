@@ -7,12 +7,10 @@
 #include <vector>
 #include "SpriteBacth.h"
 #include "InputManager.h"
-#include "Bullet.h"
 #include "Level.h"
 #include "Player.h"
 #include "Human.h"
 #include "Zombie.h"
-#include "Gun.h"
 
 enum class GameState
 {
@@ -33,7 +31,6 @@ private:
 	Camera2D _camera;
 	SpriteBacth _spriteBacth;
 	InputManager _inputManager;
-	vector<Bullet> _bullets;
 	vector<Level*> _levels;
 	vector<Human*>  _humans;
 	vector<Zombie*> _zombies;

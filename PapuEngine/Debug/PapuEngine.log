@@ -1,18 +1,5 @@
-<<<<<<< HEAD
-﻿  main.cpp
-  MainGame.cpp
-c:\users\luis\documents\copy\papu-framework\papuengine\maingame.cpp(32): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\luis\documents\copy\papu-framework\papuengine\maingame.cpp(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\luis\documents\copy\papu-framework\papuengine\maingame.cpp(128): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-  Camera2D.cpp
-  Generating Code...
-c:\users\luis\documents\copy\papu-framework\papuengine\camera2d.cpp(38): warning C4715: 'Camera2D::isBoxInView': not all control paths return a value
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\copy\papu-framework\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\copy\papu-framework\Debug\PapuEngine.pdb (Partial PDB)
-=======
 ﻿  MainGame.cpp
 c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(32): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(129): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
+c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(131): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
   PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.pdb (Partial PDB)
->>>>>>> 0fd86f4c6b69ea1352a0b34799d2f7dbe1c4f137
