@@ -1,37 +1,32 @@
 #include "Bullet.h"
 #include "ResourceManager.h"
 #include "GLTexture.h"
+#include "ResourceManager.h"
+
+
 
 
 void Bullet::draw(SpriteBacth& spriteBatch) {
+	glm::vec4 destRect(_position.x + BULLET_RADIUS, _position.y + BULLET_RADIUS, BULLET_RADIUS * 2, BULLET_RADIUS * 2);
+	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
+
 	Color color;
-	color.r = 255;
-	color.g = 255;
-	color.b = 255;
-	color.a = 255;
-	glm::vec4 uv(0.0f, 0.0f, 1.0f, 1.0f);
-	static GLTexture texture = ResourceManager::getTexture("Textures/Paper_Mario_.png");
-	glm::vec4 posAnSize = glm::vec4(_position.x, _position.y, 30, 30);
-	spriteBatch.draw(posAnSize, uv, texture.id, 0.0f, color);
+	color.set(75, 75, 75, 255);
+	spriteBatch.draw(destRect, uvRect, ResourceManager::getTexture("Textures/circle.png").id, 0.0f, color);
 }
 
-bool Bullet::update() {
-	_position += _direction * _speed;
-	_lifeTime--;
-	if (_lifeTime == 0) {
-		return true;
-	}
-	return false;
-}
-
-Bullet::Bullet(glm::vec2 po, glm::vec2 dir, float speed, int lifeTime)
+Bullet::Bullet(glm::vec2 position, glm::vec2 direction, float damage, float speed)
 {
-	_lifeTime = lifeTime;
-	_position = po;
-	_direction = dir;
+	_damage = damage;
+	_position = position;
+	_direction = direction;
 	_speed = speed;
 }
 
+void Bullet::update(std::vector<Human*>& humans,
+	std::vector<Zombie*>& zombies) {
+	_position += _direction * _speed;
+}
 
 Bullet::~Bullet()
 {

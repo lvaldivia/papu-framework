@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Human.h"
 #include "Zombie.h"
+#include "Gun.h"
 
 enum class GameState
 {

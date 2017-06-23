@@ -25,7 +25,7 @@ void MainGame::initLevel() {
 	_levels.push_back(new Level("Levels/level1.txt"));
 	_player = new Player();
 	_currenLevel = 0;
-	_player->init(1.0f, _levels[_currenLevel]->getPlayerPosition(), &_inputManager);
+	_player->init(1.0f, _levels[_currenLevel]->getPlayerPosition(), &_inputManager,&_camera);
 	_humans.push_back(_player);
 	_spriteBacth.init();
 
@@ -35,13 +35,13 @@ void MainGame::initLevel() {
 	std::uniform_int_distribution<int>randPosY(
 		1, _levels[_currenLevel]->getHeight()-2);
 
-	for (size_t i = 0; i < _levels[_currenLevel]->getNumHumans(); i++)
+	/*for (int i = 0; i < _levels[_currenLevel]->getNumHumans(); i++)
 	{
 		_humans.push_back(new Human());
 		glm::vec2 pos(randPosX(randomEngine)*TILE_WIDTH, 
 							randPosY(randomEngine)*TILE_WIDTH);
 		_humans.back()->init(1.0f, pos);
-	}
+	}*/
 
 	const std::vector<glm::vec2>& zombiePosition =
 		_levels[_currenLevel]->getZombiesPosition();
@@ -51,6 +51,8 @@ void MainGame::initLevel() {
 		_zombies.push_back(new Zombie());
 		_zombies.back()->init(1.3f, zombiePosition[i]);
 	}
+
+	
 }
 
 void MainGame::initShaders() {
@@ -98,6 +100,11 @@ void MainGame::draw() {
 		_zombies[i]->draw(_spriteBacth);
 	}
 
+	for (size_t i = 0; i < _bullets.size(); i++)
+	{
+		_bullets[i].draw(_spriteBacth);
+	}
+
 	_spriteBacth.end();
 	_spriteBacth.renderBatch();
 
@@ -141,14 +148,6 @@ void MainGame::procesInput() {
 			_camera.setScale(_camera.getScale() - SCALE_SPEED);
 		}
 		if (_inputManager.isKeyPressed(SDL_BUTTON_LEFT)) {
-			glm::vec2 mouseCoords =  _camera.convertScreenToWorl(_inputManager.getMouseCoords());
-			cout << mouseCoords.x << " " << mouseCoords.y << endl;
-
-			glm::vec2 playerPosition(0, 0);
-
-			glm::vec2 direction = mouseCoords - playerPosition;
-			direction = glm::normalize(direction);
-			_bullets.emplace_back(playerPosition, direction, 1.0f,1000);
 		}
 	}
 }
@@ -166,6 +165,11 @@ void MainGame::update() {
 }
 
 void MainGame::updateAgents() {
+	for (size_t i = 0; i < _bullets.size(); i++)
+	{
+		_bullets[i].update(_humans,_zombies);
+	}
+
 	for (size_t i = 0; i < _humans.size(); i++)
 	{
 		_humans[i]->update(_levels[_currenLevel]->getLevelData(),
