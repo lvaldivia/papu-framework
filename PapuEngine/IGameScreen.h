@@ -26,13 +26,16 @@ public:
 	ScreenState getState() const {
 		return _currentState;
 	}
+	int getIndex() const {
+		return _screenIndex;
+	}
+
 	void setRunning() {
 		_currentState = ScreenState::RUNNING;
 	}
 	void setParent(Game* game) {
 		_game = game;
 	}
-	IGameScreen();
-	virtual ~IGameScreen();
+	
 };
 
