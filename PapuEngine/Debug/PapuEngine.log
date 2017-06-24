@@ -1,5 +1,3 @@
-﻿  MainGame.cpp
-c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(32): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\luis\documents\papu-framework-master\papuengine\maingame.cpp(131): warning C4244: 'argument': conversion from 'Sint32' to 'float', possible loss of data
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.exe
-  PapuEngine.vcxproj -> C:\Users\Luis\Documents\papu-framework-master\Debug\PapuEngine.pdb (Partial PDB)
+﻿Game.obj : error LNK2019: unresolved external symbol "protected: bool __thiscall Game::initSystems(void)" (?initSystems@Game@@IAE_NXZ) referenced in function "protected: bool __thiscall Game::init(void)" (?init@Game@@IAE_NXZ)
+ScreenList.obj : error LNK2019: unresolved external symbol "public: void __thiscall ScreenList::destroy(void)" (?destroy@ScreenList@@QAEXXZ) referenced in function "public: __thiscall ScreenList::~ScreenList(void)" (??1ScreenList@@QAE@XZ)
+C:\Users\Proyecto\Documents\funda\Debug\PapuEngine.exe : fatal error LNK1120: 2 unresolved externals

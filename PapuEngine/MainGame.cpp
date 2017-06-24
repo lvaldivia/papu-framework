@@ -35,13 +35,13 @@ void MainGame::initLevel() {
 	std::uniform_int_distribution<int>randPosY(
 		1, _levels[_currenLevel]->getHeight()-2);
 
-	/*for (int i = 0; i < _levels[_currenLevel]->getNumHumans(); i++)
+	for (int i = 0; i < _levels[_currenLevel]->getNumHumans(); i++)
 	{
 		_humans.push_back(new Human());
 		glm::vec2 pos(randPosX(randomEngine)*TILE_WIDTH, 
 							randPosY(randomEngine)*TILE_WIDTH);
 		_humans.back()->init(1.0f, pos);
-	}*/
+	}
 
 	const std::vector<glm::vec2>& zombiePosition =
 		_levels[_currenLevel]->getZombiesPosition();
@@ -51,8 +51,6 @@ void MainGame::initLevel() {
 		_zombies.push_back(new Zombie());
 		_zombies.back()->init(1.3f, zombiePosition[i]);
 	}
-
-	
 }
 
 void MainGame::initShaders() {

@@ -13,7 +13,7 @@ void Player::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans,
 	std::vector<Zombie*>& zombies
 	) {
-	if (_inputManager->isKeyPressed(SDLK_w)) {
+	if (_inputManager->isKeyDown(SDLK_w)) {
 		_position.y += _speed;
 	}
 	if (_inputManager->isKeyDown(SDLK_s)) {
