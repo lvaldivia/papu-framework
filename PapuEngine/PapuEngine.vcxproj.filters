@@ -22,9 +22,6 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{1a07e116-4d96-417c-89cf-fdc9c2a249c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities">
-      <UniqueIdentifier>{e252ca2b-33f5-4cc4-b2c4-33a34e4aad4e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Engine\Utils">
       <UniqueIdentifier>{dae20877-c341-4ecf-8cc3-12afdf870acf}</UniqueIdentifier>
     </Filter>
@@ -55,31 +52,40 @@
     <Filter Include="Source Files\Engine\Utils">
       <UniqueIdentifier>{553b4b29-a02e-4635-a02d-95d82a052dd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Zombie">
+      <UniqueIdentifier>{c69845e7-7667-4c9c-9ee0-12c086837f65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Zombie\Entities">
+      <UniqueIdentifier>{e252ca2b-33f5-4cc4-b2c4-33a34e4aad4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plataformer">
+      <UniqueIdentifier>{f8b78d04-1041-4aef-acc5-05fb3e958705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Plataformer">
+      <UniqueIdentifier>{8e29cc2a-34b4-46b7-83fa-b3c74e561b9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PapuEngine.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Agent.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Zombie\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Human.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Zombie\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Zombie\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Zombie\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Zombie\Entities</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Engine\Input</Filter>
@@ -122,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Source Files\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files\Plataformer</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlayScreen.cpp">
+      <Filter>Source Files\Plataformer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Header Files\Plataformer</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePlayScreen.h">
+      <Filter>Header Files\Plataformer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

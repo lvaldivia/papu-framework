@@ -6,6 +6,25 @@ ScreenList::ScreenList(Game* game):_game(game)
 {
 }
 
+void ScreenList::setScreen(int nextScreen) {
+	_currentIndex = nextScreen;
+}
+void ScreenList::addScreen(IGameScreen* newScreen) {
+	newScreen->_screenIndex = _screens.size();
+	_screens.push_back(newScreen);
+	newScreen->build();
+	newScreen->setParent(_game);
+}
+void ScreenList::destroy() {
+	for (size_t i = 0; i < _screens.size(); i++)
+	{
+		_screens[i]->destroy();
+	}
+	_currentIndex = -1;
+	_screens.resize(0);
+}
+
+
 ScreenList::~ScreenList()
 {
 	destroy();

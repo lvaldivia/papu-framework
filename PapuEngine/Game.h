@@ -1,19 +1,14 @@
 #pragma once
 #include "Window.h"
 #include "InputManager.h"
+#include <memory>
+
 class ScreenList;
 class IGameScreen;
 
 class Game
 {
-protected:
-	bool init();
-	void update();
-	void draw();
-	bool initSystems();
-	bool _isRunning = false;
-	Window _window;
-	InputManager _inputManager;
+
 public:
 	Game();
 	virtual ~Game();
@@ -23,7 +18,18 @@ public:
 	virtual void addScreens() = 0;
 	virtual void onExit() = 0;
 	void onSDLEvent(SDL_Event& event);
+
+protected:
+	bool init();
+	void update();
+	void draw();
+	bool initSystems();
+	std::unique_ptr<ScreenList> 
+					_screenList = nullptr;
+	bool _isRunning = false;
+	Window _window;
+	InputManager _inputManager;
 	IGameScreen* _currentScreen = nullptr;
-	
+
 };
 

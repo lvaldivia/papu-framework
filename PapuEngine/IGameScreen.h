@@ -14,6 +14,7 @@ protected:
 	ScreenState _currentState = ScreenState::NONE;
 	Game* _game = nullptr;
 public:
+	friend class ScreenList;
 	virtual void build() = 0;
 	virtual void destroy() = 0;
 	virtual void onExit() = 0;
