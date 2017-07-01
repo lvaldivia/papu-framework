@@ -18,21 +18,25 @@ private:
 	Window* _window = nullptr;
 	SpriteBacth _spriteBatch;
 	GLTexture _texture;
+	GUI _gui;
+	
 	std::unique_ptr<b2World> _world;
 
 public:
 	GamePlayScreen(Window* window);
 	~GamePlayScreen();
-
+	bool onExitClicked();
 	virtual void build() override;
 	virtual void destroy() override;
 	virtual void onExit() override;
 	virtual void onEntry() override;
+	void initWorld();
+	virtual void initGUI()override;
 	virtual void draw()override;
 	virtual void update()override;
+	virtual void initSystem() override;
 	virtual int getNextScreen() const override;
 	virtual int getPreviousScreen() const override;
-
-	void checkInput();
+	virtual void checkInput() override;
 };
 

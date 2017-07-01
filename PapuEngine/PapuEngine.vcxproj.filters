@@ -141,6 +141,9 @@
     <ClCompile Include="GUI.cpp">
       <Filter>Source Files\Engine\Screen</Filter>
     </ClCompile>
+    <ClCompile Include="MenuScreen.cpp">
+      <Filter>Source Files\Plataformer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -223,6 +226,12 @@
     </ClInclude>
     <ClInclude Include="GUI.h">
       <Filter>Header Files\Engine\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.h">
+      <Filter>Header Files\Plataformer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenIndices.h">
+      <Filter>Header Files\Plataformer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
