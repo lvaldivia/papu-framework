@@ -14,7 +14,7 @@ class Agent
 protected:
 	glm::vec2 _position;
 	float _speed;
-	Color color;
+	ColorRGBA ColorRGBA;
 	void checkTilePosition(const std::vector<std::string>& levelData, 
 		std::vector<glm::vec2>& collideTilePosition,float x, float y );
 	void collideWithTile(glm::vec2 tilePos);

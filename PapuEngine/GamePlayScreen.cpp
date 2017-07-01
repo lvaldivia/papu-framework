@@ -22,7 +22,6 @@ void GamePlayScreen::destroy() {
 void GamePlayScreen::onExit() {
 }
 
-
 void GamePlayScreen::onEntry() {
 	b2Vec2 gravity(0.0f, -0.8f);
 	_world = std::make_unique<b2World>(gravity);
@@ -34,10 +33,10 @@ void GamePlayScreen::onEntry() {
 	groundBox.SetAsBox(10.0f, 10.0f);
 	groundBody->CreateFixture(&groundBox, 0.0f);
 
-	_program.compileShaders("Shaders/colorShaderVert.txt",
-		"Shaders/colorShaderFrag.txt");
+	_program.compileShaders("Shaders/ColorRGBAShaderVert.txt",
+		"Shaders/ColorRGBAShaderFrag.txt");
 	_program.addAtribute("vertexPosition");
-	_program.addAtribute("vertexColor");
+	_program.addAtribute("vertexColorRGBA");
 	_program.addAtribute("vertexUV");
 	_program.linkShader();
 
@@ -45,8 +44,6 @@ void GamePlayScreen::onEntry() {
 	_camera2d.init(_window->getScreenWidth(),
 		_window->getScreenHeight());
 }
-
-
 
 void GamePlayScreen::draw() {
 	glClearDepth(1.0);

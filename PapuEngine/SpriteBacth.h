@@ -16,7 +16,7 @@ enum class GlyphSortType {
 class Glyph {
 public:
 	Glyph() {}
-	Glyph(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint _texture, float _depth, const Color& color) {
+	Glyph(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint _texture, float _depth, const ColorRGBA& color) {
 		texture = _texture;
 		depth = _depth;
 
@@ -73,7 +73,7 @@ public:
 	void init();
 	void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 	void end();
-	void draw(const glm::vec4& destRect,const glm::vec4& uvRect, GLuint texture, float depth,const Color& color);
+	void draw(const glm::vec4& destRect,const glm::vec4& uvRect, GLuint texture, float depth,const ColorRGBA& color);
 	void renderBatch();
 
 	static bool compareFrontToBack(Glyph* a, Glyph* b);

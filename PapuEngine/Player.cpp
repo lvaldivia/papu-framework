@@ -7,7 +7,7 @@ void Player::init(float speed, glm::vec2 position, InputManager* inputManager, C
 	_position = position;
 	_camera = camera;
 	_inputManager = inputManager;
-	color.set(0, 0, 185, 255);
+	ColorRGBA.set(0, 0, 185, 255);
 }
 void Player::update(const std::vector<std::string>& levelData,
 	std::vector<Human*>& humans,

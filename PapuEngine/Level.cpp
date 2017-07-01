@@ -33,8 +33,8 @@ void Level::parseLevel() {
 	_spriteBatch.begin();
 
 	glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);
-	Color color;
-	color.set(255, 255, 255, 255);
+	ColorRGBA ColorRGBA;
+	ColorRGBA.set(255, 255, 255, 255);
 	for (int y = 0; y < _levelData.size(); y++)
 	{
 		for (int x = 0; x < _levelData[y].size(); x++)
@@ -48,16 +48,16 @@ void Level::parseLevel() {
 			case 'B':
 				_spriteBatch.draw(destRect, uvRect, 
 					ResourceManager::getTexture("Textures/red_bricks.png").id
-					,0.0f,color);
+					,0.0f,ColorRGBA);
 				break;
 			case 'G':
 				_spriteBatch.draw(destRect, uvRect,
 					ResourceManager::getTexture("Textures/glass.png").id
-					, 0.0f, color);
+					, 0.0f, ColorRGBA);
 				break;
 			case 'L':_spriteBatch.draw(destRect, uvRect,
 				ResourceManager::getTexture("Textures/light_bricks.png").id
-				, 0.0f, color);				
+				, 0.0f, ColorRGBA);				
 				break;
 			case '@':
 				_levelData[y][x] = '.';

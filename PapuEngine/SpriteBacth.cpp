@@ -78,8 +78,8 @@ void SpriteBacth::renderBatch() {
 	glBindVertexArray(0);
 }
 
-void SpriteBacth::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const Color& color) {
-	_glyphs.emplace_back(destRect, uvRect, texture, depth, color);
+void SpriteBacth::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const ColorRGBA& ColorRGBA) {
+	_glyphs.emplace_back(destRect, uvRect, texture, depth, ColorRGBA);
 }
 
 void SpriteBacth::sortGlyph() {

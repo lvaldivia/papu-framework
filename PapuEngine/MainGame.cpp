@@ -54,10 +54,10 @@ void MainGame::initLevel() {
 }
 
 void MainGame::initShaders() {
-	_program.compileShaders("Shaders/colorShaderVert.txt",
-		"Shaders/colorShaderFrag.txt");
+	_program.compileShaders("Shaders/ColorRGBAShaderVert.txt",
+		"Shaders/ColorRGBAShaderFrag.txt");
 	_program.addAtribute("vertexPosition");
-	_program.addAtribute("vertexColor");
+	_program.addAtribute("vertexColorRGBA");
 	_program.addAtribute("vertexUV");
 	_program.linkShader();
 }
