@@ -138,6 +138,9 @@
     <ClCompile Include="GamePlayScreen.cpp">
       <Filter>Source Files\Plataformer</Filter>
     </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Engine\Screen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="GamePlayScreen.h">
       <Filter>Header Files\Plataformer</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files\Engine\Screen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

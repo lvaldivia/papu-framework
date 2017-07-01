@@ -12,7 +12,6 @@ public:
 	virtual void addScreens() override;
 	virtual void onExit() override;
 private:
-	std::unique_ptr<GamePlayScreen> 
-					_gamePlayScreen = nullptr;
+	std::unique_ptr<GamePlayScreen> _gamePlayScreen = nullptr;
 };
 

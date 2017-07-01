@@ -8,6 +8,7 @@
 #include "Window.h"
 #include "GLTexture.h"
 #include "SpriteBacth.h"
+#include "GUI.h"
 
 class GamePlayScreen : public IGameScreen
 {
