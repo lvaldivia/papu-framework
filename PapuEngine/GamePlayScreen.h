@@ -26,11 +26,12 @@ public:
 	GamePlayScreen(Window* window);
 	~GamePlayScreen();
 	bool onExitClicked();
+	void initWorld();
 	virtual void build() override;
 	virtual void destroy() override;
 	virtual void onExit() override;
 	virtual void onEntry() override;
-	void initWorld();
+	
 	virtual void initGUI()override;
 	virtual void draw()override;
 	virtual void update()override;

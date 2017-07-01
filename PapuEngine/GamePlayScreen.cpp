@@ -11,7 +11,7 @@ bool GamePlayScreen::onExitClicked()
 GamePlayScreen::GamePlayScreen(Window* window):
 	_window(window)
 {
-	
+	_screenIndex = SCREEN_INDEX_GAMEPLAY;
 }
 
 
@@ -115,9 +115,9 @@ void GamePlayScreen::checkInput() {
 }
 
 int GamePlayScreen::getNextScreen() const {
-	return -1;
+	return SCREEN_INDEX_NO_SCREEN;
 };
 
 int GamePlayScreen::getPreviousScreen() const {
-	return -1;
+	return SCREEN_INDEX_MENU;
 }

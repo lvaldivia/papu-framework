@@ -174,7 +174,8 @@ void GUI::onSDLEvent(SDL_Event& evnt) {
 	case SDL_TEXTINPUT:
 		codePoint = 0;
 		for (int i = 0; i < evnt.text.text[i] != '\0'; i++) {
-			codePoint |= ((CEGUI::utf32)*(unsigned char*)evnt.text.text[i] << (i * 8));
+			codePoint |= 
+				(((CEGUI::utf32)*(unsigned char*)&evnt.text.text[i]) << (i * 8));
 		}
 		_context->injectChar(codePoint);
 		break;
