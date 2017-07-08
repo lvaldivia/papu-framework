@@ -1,4 +1,5 @@
 #pragma once
+#include "InputManager.h"
 enum class ScreenState {
 	NONE,
 	RUNNING,
@@ -13,6 +14,7 @@ protected:
 	int _screenIndex = 1;
 	ScreenState _currentState = ScreenState::NONE;
 	Game* _game = nullptr;
+	InputManager _inputManager;
 public:
 	friend class ScreenList;
 	virtual void checkInput() = 0;
@@ -26,6 +28,9 @@ public:
 	virtual void initGUI() = 0;
 	virtual int getNextScreen() const = 0;
 	virtual int getPreviousScreen() const = 0;
+	void setInputManager(InputManager inputManager) {
+		_inputManager = inputManager;
+	}
 	ScreenState getState() const {
 		return _currentState;
 	}

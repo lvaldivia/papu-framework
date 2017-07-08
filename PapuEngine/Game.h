@@ -18,6 +18,7 @@ public:
 	virtual void addScreens() = 0;
 	virtual void onExit() = 0;
 	void onSDLEvent(SDL_Event& event);
+	InputManager _inputManager;
 
 protected:
 	bool init();
@@ -28,7 +29,7 @@ protected:
 					_screenList = nullptr;
 	bool _isRunning = false;
 	Window _window;
-	InputManager _inputManager;
+	
 	IGameScreen* _currentScreen = nullptr;
 
 };

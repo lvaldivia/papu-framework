@@ -37,7 +37,26 @@ bool Game::initSystems() {
 }
 
 void Game::onSDLEvent(SDL_Event& event) {
-
+	switch (event.type) {
+	case SDL_QUIT:
+		
+		break;
+	case SDL_MOUSEMOTION:
+		_inputManager.setMouseCoords((float)event.motion.x, (float)event.motion.y);
+		break;
+	case SDL_KEYDOWN:
+		_inputManager.pressKey(event.key.keysym.sym);
+		break;
+	case SDL_KEYUP:
+		_inputManager.releaseKey(event.key.keysym.sym);
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		_inputManager.pressKey(event.button.button);
+		break;
+	case SDL_MOUSEBUTTONUP:
+		_inputManager.releaseKey(event.button.button);
+		break;
+	}
 }
 
 void Game::run() {

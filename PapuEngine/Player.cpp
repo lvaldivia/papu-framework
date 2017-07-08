@@ -1,5 +1,7 @@
 #include "Player.h"
 #include <SDL\SDL.h>
+#include <iostream>
+
 
 
 void Player::init(float speed, glm::vec2 position, InputManager* inputManager, Camera2D* camera) {

@@ -13,7 +13,7 @@ void App::onInit() {
 void App::addScreens() {
 	_gamePlayScreen =
 		std::make_unique<GamePlayScreen>(&_window);
-
+	_gamePlayScreen->setInputManager(_inputManager);
 	_menuScreen = 
 		std::make_unique<MenuScreen>(&_window);
 

@@ -144,6 +144,9 @@
     <ClCompile Include="MenuScreen.cpp">
       <Filter>Source Files\Plataformer</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -232,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="ScreenIndices.h">
       <Filter>Header Files\Plataformer</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

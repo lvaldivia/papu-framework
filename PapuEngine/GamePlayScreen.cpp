@@ -1,6 +1,8 @@
 #include "GamePlayScreen.h"
 #include "Game.h"
 #include "ScreenIndices.h"
+#include <random>
+#include <ctime>
 
 bool GamePlayScreen::onExitClicked()
 {
@@ -32,10 +34,65 @@ void GamePlayScreen::onExit() {
 void GamePlayScreen::onEntry() {
 	initWorld();
 	initSystem();
+	_currentLevel = 0;
+	_levels.push_back(new Level("Levels/level1.txt"));
 	_spriteBatch.init();
+	_hudSpriteBatch.init();
 	initGUI();
+	_spriteFont = new SpriteFont("Fonts/arial.ttf", 64);
 	_camera2d.init(_window->getScreenWidth(),
 		_window->getScreenHeight());
+
+	_hudCamera.init(_window->getScreenWidth(),
+		_window->getScreenHeight());
+
+	_hudCamera.setPosition(glm::vec2(_window->getScreenWidth() / 2, _window->getScreenHeight() / 2));
+
+	_player = new Player();
+	_player->init(1.0f, _levels[_currentLevel]->getPlayerPosition(), &_game->_inputManager, &_camera2d);
+	_humans.push_back(_player);
+
+	const std::vector<glm::vec2>& zombiePosition =
+		_levels[_currentLevel]->getZombiesPosition();
+
+	for (size_t i = 0; i < zombiePosition.size(); i++)
+	{
+		_zombies.push_back(new Zombie());
+		_zombies.back()->init(1.3f, zombiePosition[i]);
+	}
+
+	std::mt19937 randomEngine(time(nullptr));
+	std::uniform_int_distribution<int>randPosX(
+		1, _levels[_currentLevel]->getWidth() - 2);
+	std::uniform_int_distribution<int>randPosY(
+		1, _levels[_currentLevel]->getHeight() - 2);
+
+	for (int i = 0; i < _levels[_currentLevel]->getNumHumans(); i++)
+	{
+		_humans.push_back(new Human());
+		glm::vec2 pos(randPosX(randomEngine)*TILE_WIDTH,
+			randPosY(randomEngine)*TILE_WIDTH);
+		_humans.back()->init(1.0f, pos);
+	}
+}
+
+void GamePlayScreen::drawHud() {
+	char buffer[256];
+
+	glm::mat4 projectionMatrix = _hudCamera.getCameraMatrix();
+	GLint pUniform = _program.getUniformLocation("P");
+	glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
+	_hudSpriteBatch.begin();
+	sprintf_s(buffer, "Num Humans %d",10);
+	_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(0, 0),
+		glm::vec2(0.5), 0.0f, ColorRGBA(255, 255, 255, 255));
+
+	sprintf_s(buffer, "Num Zombies %d", 10);
+	_spriteFont->draw(_hudSpriteBatch, buffer, glm::vec2(0, 36),
+		glm::vec2(0.5), 0.0f, ColorRGBA(255, 255, 255, 255));
+	_hudSpriteBatch.end();
+	_hudSpriteBatch.renderBatch();
+
 }
 
 void GamePlayScreen::initWorld() {
@@ -54,29 +111,6 @@ void GamePlayScreen::initGUI()
 	_gui.init("GUI");
 	_gui.loadScheme("TaharezLook.scheme");
 	_gui.loadScheme("AlfiskoSkin.scheme");
-	CEGUI::PushButton* testButton =
-		static_cast<CEGUI::PushButton*>(
-		_gui.createWidget("AlfiskoSkin/Button",
-			glm::vec4(0.5f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f), 
-			"Test Button"));
-
-	testButton->subscribeEvent(
-		CEGUI::PushButton::EventClicked,
-		CEGUI::Event::Subscriber(
-			&GamePlayScreen::onExitClicked, this)
-
-	);
-
-
-	_gui.setMouseCursor("AlfiskoSkin/MouseArrow");
-	_gui.showMouseCursor();
-	SDL_ShowCursor(0);
-
-	CEGUI::Combobox* testCombo = static_cast<CEGUI::Combobox*>
-		(_gui.createWidget("TaharezLook/Combobox",
-			glm::vec4(0.2f, 0.5f, 0.1f, 0.05f), glm::vec4(0.0f),
-			"Combobox"));
-
 }
 
 void GamePlayScreen::draw() {
@@ -84,15 +118,52 @@ void GamePlayScreen::draw() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	_program.use();
 	_spriteBatch.begin();
+	_levels[_currentLevel]->draw();
+	for (size_t i = 0; i < _humans.size(); i++)
+	{
+		_humans[i]->draw(_spriteBatch);
+	}
+
+	for (size_t i = 0; i < _zombies.size(); i++)
+	{
+		_zombies[i]->draw(_spriteBatch);
+	}
+
+
 	_spriteBatch.end();
 	_spriteBatch.renderBatch();
 	glActiveTexture(GL_TEXTURE0);
+	GLuint pLocation =
+		_program.getUniformLocation("P");
+
+	glm::mat4 cameraMatrix = _camera2d.getCameraMatrix();
+	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
+	drawHud();
+	GLuint imageLocation = _program.getUniformLocation("myImage");
+	glUniform1i(imageLocation, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	_program.unuse();
-	_gui.draw();
+	//_gui.draw();
 }
 void GamePlayScreen::update() {
 	checkInput();
+	_camera2d.update();
+	
+	for (size_t i = 0; i < _humans.size(); i++)
+	{
+
+		_humans[i]->update(_levels[_currentLevel]->getLevelData(), _humans, _zombies);
+	}
+
+	for (size_t i = 0; i < _zombies.size(); i++)
+	{
+		_zombies[i]->update(_levels[_currentLevel]->getLevelData(),
+			_humans, _zombies);
+	}
+
+	_camera2d.setPosition(_player->getPosition());
+
+	_hudCamera.update();
 }
 
 void GamePlayScreen::initSystem()

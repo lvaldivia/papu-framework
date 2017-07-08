@@ -8,7 +8,14 @@
 #include "Window.h"
 #include "GLTexture.h"
 #include "SpriteBacth.h"
+#include "SpriteFont.h"
 #include "GUI.h"
+#include "Level.h"
+#include "Human.h"
+#include "Zombie.h"
+#include "Agent.h"
+#include "Player.h"
+#include <vector>
 
 class GamePlayScreen : public IGameScreen
 {
@@ -19,8 +26,16 @@ private:
 	SpriteBacth _spriteBatch;
 	GLTexture _texture;
 	GUI _gui;
-	
+	int _currentLevel;
+	vector<Level*> _levels;
 	std::unique_ptr<b2World> _world;
+	vector<Human*>  _humans;
+	vector<Zombie*> _zombies;
+	Player* _player;
+	SpriteFont* _spriteFont;
+	SpriteBacth  _hudSpriteBatch;
+	Camera2D _hudCamera;
+	void drawHud();
 
 public:
 	GamePlayScreen(Window* window);
