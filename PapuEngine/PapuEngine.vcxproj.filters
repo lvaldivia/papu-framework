@@ -64,6 +64,12 @@
     <Filter Include="Header Files\Plataformer">
       <UniqueIdentifier>{8e29cc2a-34b4-46b7-83fa-b3c74e561b9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Plataformer\Entities">
+      <UniqueIdentifier>{7edd6b71-8ed8-4453-afce-08031197878b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plataformer\Entities">
+      <UniqueIdentifier>{a4da31d3-50b8-4450-95cb-d76cfa4157fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="MenuScreen.cpp">
       <Filter>Source Files\Plataformer</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Source Files\Plataformer\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="ScreenIndices.h">
       <Filter>Header Files\Plataformer</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Header Files\Plataformer\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
