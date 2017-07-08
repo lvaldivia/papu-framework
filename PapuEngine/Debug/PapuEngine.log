@@ -1,3 +1,5 @@
-﻿  SpriteFont.cpp
+﻿  GamePlayScreen.cpp
+  App.cpp
+  Generating Code...
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\papu-framework\Debug\PapuEngine.exe
   PapuEngine.vcxproj -> C:\Users\Proyecto\Documents\papu-framework\Debug\PapuEngine.pdb (Partial PDB)

@@ -23,9 +23,11 @@ private:
 	GLTexture _texture;
 	GUI _gui;
 	SpriteFont* _spriteFont;
+	Camera2D _hudCamera;
+	SpriteBacth _hudBatch;
 	vector<Block> _blocks;
-	
 	std::unique_ptr<b2World> _world;
+	void drawHUD();
 
 public:
 	GamePlayScreen(Window* window);
