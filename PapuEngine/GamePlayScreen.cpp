@@ -3,6 +3,8 @@
 #include "ScreenIndices.h"
 
 #include "ResourceManager.h"
+#include <random>
+
 
 bool GamePlayScreen::onExitClicked()
 {
@@ -34,12 +36,27 @@ void GamePlayScreen::onExit() {
 void GamePlayScreen::onEntry() {
 	initWorld();
 	_texture = ResourceManager::getTexture("Textures/red_bricks.png");
-	Block block;
-	block.init(_world.get(), glm::vec2(0.0f, -20.0f),
-		glm::vec2(50.0f, 10.0f), _texture, 
-		ColorRGBA(255, 255, 255, 255),false);
+	std::mt19937 randomGenerator;
+	std::uniform_real_distribution<float>xPos(-10.0f, 10.0f);
+	std::uniform_real_distribution<float>yPos(-5.0f, 15.0f);
+	std::uniform_real_distribution<float>size(0.5f, 2.5f);
 
-	_blocks.push_back(block);
+	const int NUM_BOXES = 50;
+
+	for (int i = 0; i < NUM_BOXES; i++)
+	{
+		Block block;
+		block.init(_world.get(), glm::vec2(xPos(randomGenerator), 
+			yPos(randomGenerator)),
+			glm::vec2(size(randomGenerator)
+						,size(randomGenerator)), _texture,
+			ColorRGBA(255, 255, 255, 255), true);
+
+		_blocks.push_back(block);
+	}
+
+
+	
 
 	initSystem();
 	_spriteBatch.init();
@@ -50,10 +67,10 @@ void GamePlayScreen::onEntry() {
 }
 
 void GamePlayScreen::initWorld() {
-	b2Vec2 gravity(0.0f, -0.8f);
+	b2Vec2 gravity(0.0f, -0.08f);
 	_world = std::make_unique<b2World>(gravity);
 	b2BodyDef grounDef;
-	grounDef.position.Set(0.0f, -30.0f);
+	grounDef.position.Set(0.0f, -15.0f);
 	b2Body* groundBody = _world->CreateBody(&grounDef);
 	b2PolygonShape groundBox;
 	groundBox.SetAsBox(10.0f, 10.0f);
@@ -77,7 +94,6 @@ void GamePlayScreen::initGUI()
 			&GamePlayScreen::onExitClicked, this)
 
 	);
-
 
 	_gui.setMouseCursor("AlfiskoSkin/MouseArrow");
 	_gui.showMouseCursor();

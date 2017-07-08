@@ -11,6 +11,7 @@
 #include "GUI.h"
 #include <vector>
 #include "Block.h"
+#include "SpriteFont.h"
 
 class GamePlayScreen : public IGameScreen
 {
@@ -21,6 +22,7 @@ private:
 	SpriteBacth _spriteBatch;
 	GLTexture _texture;
 	GUI _gui;
+	SpriteFont* _spriteFont;
 	vector<Block> _blocks;
 	
 	std::unique_ptr<b2World> _world;

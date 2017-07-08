@@ -153,6 +153,9 @@
     <ClCompile Include="Block.cpp">
       <Filter>Source Files\Plataformer\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="Block.h">
       <Filter>Header Files\Plataformer\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

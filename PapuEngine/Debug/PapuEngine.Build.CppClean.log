@@ -1,6 +1,5 @@
 c:\users\proyecto\documents\papu-framework\papuengine\debug\vc140.pdb
 c:\users\proyecto\documents\papu-framework\papuengine\debug\vc140.idb
-c:\users\proyecto\documents\papu-framework\papuengine\debug\gameplayscreen.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\gls_program.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\gui.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\human.obj
@@ -10,6 +9,7 @@ c:\users\proyecto\documents\papu-framework\papuengine\debug\iomanager.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\level.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\main.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\maingame.obj
+c:\users\proyecto\documents\papu-framework\papuengine\debug\menuscreen.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\papuengine.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\picopng.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\player.obj
@@ -22,13 +22,14 @@ c:\users\proyecto\documents\papu-framework\papuengine\debug\window.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\zombie.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\agent.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\app.obj
+c:\users\proyecto\documents\papu-framework\papuengine\debug\block.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\camera2d.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\error.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\game.obj
+c:\users\proyecto\documents\papu-framework\papuengine\debug\gameplayscreen.obj
 c:\users\proyecto\documents\papu-framework\debug\papuengine.ilk
 c:\users\proyecto\documents\papu-framework\debug\papuengine.exe
 c:\users\proyecto\documents\papu-framework\debug\papuengine.pdb
-c:\users\proyecto\documents\papu-framework\papuengine\debug\mainmenuscreen.obj
 c:\users\proyecto\documents\papu-framework\papuengine\debug\papuengine.tlog\cl.command.1.tlog
 c:\users\proyecto\documents\papu-framework\papuengine\debug\papuengine.tlog\cl.read.1.tlog
 c:\users\proyecto\documents\papu-framework\papuengine\debug\papuengine.tlog\cl.write.1.tlog
