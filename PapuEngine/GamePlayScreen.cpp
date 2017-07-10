@@ -43,11 +43,7 @@ void GamePlayScreen::onEntry() {
 	_camera2d.init(_window->getScreenWidth(),
 		_window->getScreenHeight());
 
-	_hudCamera.init(_window->getScreenWidth(),
-		_window->getScreenHeight());
-
-	_hudCamera.setPosition(glm::vec2(_window->getScreenWidth() / 2, _window->getScreenHeight() / 2));
-
+	
 	_player = new Player();
 	_player->init(1.0f, _levels[_currentLevel]->getPlayerPosition(), &_game->_inputManager, &_camera2d);
 	_humans.push_back(_player);
@@ -138,7 +134,7 @@ void GamePlayScreen::draw() {
 
 	glm::mat4 cameraMatrix = _camera2d.getCameraMatrix();
 	glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
-	drawHud();
+	//drawHud();
 	GLuint imageLocation = _program.getUniformLocation("myImage");
 	glUniform1i(imageLocation, 0);
 	glBindTexture(GL_TEXTURE_2D, 0);
